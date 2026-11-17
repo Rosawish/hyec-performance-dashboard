@@ -1,0 +1,15 @@
+
+@page {size:A4; margin:16mm 13mm 17mm}
+html,body{background:white!important;color:#172d39!important;font-family:'Noto Sans CJK TC',sans-serif!important;font-size:10pt!important;line-height:1.65!important}
+.app-sidebar,.app-topbar,.sidebar-toggle,.radar-controls,footer,#search,label:has(#search),.pdf-downloads{display:none!important}
+.app-content,main.report{margin:0!important;padding:0!important;max-width:none!important;width:auto!important}
+*{box-sizing:border-box;box-shadow:none!important;text-shadow:none!important}
+section,article,.notice,.grid{background:white!important;color:#172d39!important;border-color:#cddce3!important}
+h1{font-size:22pt!important;color:#123d54!important} h2{font-size:16pt!important;color:#123d54!important;margin-top:6mm!important} h3{font-size:12pt!important;color:#12594f!important}
+h1,h2,h3,h4,summary{break-after:avoid} p,li{orphans:3;widows:3}
+.grid{display:block!important}.grid>article{margin:3mm 0!important;padding:3mm!important}
+.scroll{overflow:visible!important}table{width:100%!important;min-width:0!important;table-layout:auto!important;border-collapse:collapse!important;font-size:8.5pt!important}thead{display:table-header-group}tr{break-inside:avoid}th,td{color:#172d39!important;background:white!important;white-space:normal!important;overflow-wrap:anywhere!important;padding:2mm!important;border:1px solid #d6e1e7!important;max-width:none!important}
+a{color:#155e75!important;text-decoration:none!important}pre{white-space:pre-wrap!important;word-break:break-word}details{display:block!important}
+.radar-level-grid{display:block!important}.radar-level-card{break-inside:avoid;padding:3mm!important;margin:0!important}.radar-visual{width:90mm!important;margin:auto!important}.radar-visual svg{width:90mm!important;height:auto!important}.radar-snapshot{break-before:page}.radar-note{font-size:8pt!important}.radar-members{font-size:8pt!important}
+.pdf-cover{border-bottom:2px solid #168474;padding-bottom:5mm;margin-bottom:5mm}.pdf-cover p{font-size:9pt!important}
+@page{@bottom-center{content:'HYEC · 2026 Q3 · ' counter(page) ' / ' counter(pages);font-size:8pt;color:#637885}}

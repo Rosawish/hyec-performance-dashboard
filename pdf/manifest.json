@@ -1,0 +1,109 @@
+{
+  "source_commit": "58609c19e16f9d03a36e27bce13b2abb4561738c",
+  "generated_at": "2026-11-17T08:05:50.780379+00:00",
+  "reports": [
+    {
+      "name": "全公司總覽",
+      "file": "全公司總覽_2026Q3完整報告.pdf",
+      "pages": 24,
+      "characters": 8546,
+      "sha256": "44d42d207359b9dc383f528581a14c104fce6f05cd6e4b9df03e373c0f3e6500"
+    },
+    {
+      "name": "王基政",
+      "file": "王基政_2026Q3完整報告.pdf",
+      "pages": 13,
+      "characters": 10276,
+      "sha256": "59d7271cc3f2f7a1b241352511958891ca28d1e9e00cf33fdf2aa33a06731ccc"
+    },
+    {
+      "name": "王欽田",
+      "file": "王欽田_2026Q3完整報告.pdf",
+      "pages": 13,
+      "characters": 11616,
+      "sha256": "5cf312b0c165f7d56852df04c92a66bae8627b163b31239ddf9762dae3b04969"
+    },
+    {
+      "name": "黃建川",
+      "file": "黃建川_2026Q3完整報告.pdf",
+      "pages": 15,
+      "characters": 13316,
+      "sha256": "cf1ac983b4a9069adfdb69ec1a1ae51c7657d9e7bdd6b65d7f7c1bd53e000866"
+    },
+    {
+      "name": "趙永新",
+      "file": "趙永新_2026Q3完整報告.pdf",
+      "pages": 16,
+      "characters": 14863,
+      "sha256": "414d37123cda5b5640b377a2c09038ddb0ded0e51673b3f2b89398201e13598a"
+    },
+    {
+      "name": "鐘裕祥",
+      "file": "鐘裕祥_2026Q3完整報告.pdf",
+      "pages": 16,
+      "characters": 14705,
+      "sha256": "d93d8f6b9a02e0623908182f0fdb60806a02860af02afd5fddaa63b05b9c5139"
+    },
+    {
+      "name": "蕭世錦",
+      "file": "蕭世錦_2026Q3完整報告.pdf",
+      "pages": 16,
+      "characters": 15086,
+      "sha256": "948629aebf9dfc7b23b1409f0bdbe7707013af9ecf92cdcd151b207a4b0009d2"
+    },
+    {
+      "name": "潘德義",
+      "file": "潘德義_2026Q3完整報告.pdf",
+      "pages": 16,
+      "characters": 16344,
+      "sha256": "3a5c528e7a2e093c7e46e497646062f6d43f458ff90a6f115cf4ea1ad197657e"
+    },
+    {
+      "name": "黃忠敏",
+      "file": "黃忠敏_2026Q3完整報告.pdf",
+      "pages": 14,
+      "characters": 14284,
+      "sha256": "b7092818138175f1b2e9a14caf5a3d6797ddb219e219c527b2e23577476136fc"
+    },
+    {
+      "name": "蕭珮淇",
+      "file": "蕭珮淇_2026Q3完整報告.pdf",
+      "pages": 15,
+      "characters": 15488,
+      "sha256": "da6ec34b8bcd169ae1f9be01391bd9db2ee8ee466b32e457a995f6fe9d75f914"
+    },
+    {
+      "name": "謝世澤",
+      "file": "謝世澤_2026Q3完整報告.pdf",
+      "pages": 22,
+      "characters": 18730,
+      "sha256": "b1d51ab860b0ce1edef41be052a1a2a9717bfc0566a15164de675032c2ec5c60"
+    },
+    {
+      "name": "翁志宏",
+      "file": "翁志宏_2026Q3完整報告.pdf",
+      "pages": 15,
+      "characters": 15644,
+      "sha256": "1b9a4a389395be3cc3e823a72b72e507e69b72cec028c710bbd80932965e9dfe"
+    },
+    {
+      "name": "陳英傑",
+      "file": "陳英傑_2026Q3完整報告.pdf",
+      "pages": 14,
+      "characters": 12564,
+      "sha256": "bf5fc80477811bcbc525304305fc08f7ac4f4c5d365126f184d527352913482c"
+    },
+    {
+      "name": "蕭惠媛",
+      "file": "蕭惠媛_2026Q3完整報告.pdf",
+      "pages": 17,
+      "characters": 17479,
+      "sha256": "433122a9622eb702ee36d43ed1cfbc364d6a20e6569d8c580e34e8985f934ec5"
+    }
+  ],
+  "combined": {
+    "file": "全公司_2026Q3完整報告.pdf",
+    "pages": 226,
+    "sha256": "5a5ea350bcbf553ef271d6d0add8396847aed4a257fbe12d22a1f0b6cfe27607"
+  }
+}
