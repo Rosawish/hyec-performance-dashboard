@@ -1,0 +1,29 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>總經理三層級雷達圖｜POC</title><style>
+*{box-sizing:border-box}body{font:16px/1.55 system-ui,sans-serif;background:#f6f7fc;color:#202440;margin:0}main{max-width:886px;margin:auto;padding:1.3rem 1rem}h1{font-size:clamp(1.45rem,4vw,2.15rem);margin:.5rem 0}p{margin:.35rem 0 1rem}.card{background:white;border:1px solid #e4e5f0;border-radius:14px;padding:1rem;box-shadow:0 8px 26px #2222460d}.notice{border-left:4px solid #6747b3;padding:.5rem .75rem;background:#ece9fa}a{color:#5630a0}.controls{display:flex;flex-wrap:wrap;gap:.75rem;margin:.5rem 0 1rem}select{display:block;margin-top:.3rem;padding:.45rem;border:1px solid #a9aed1;border-radius:.35rem;background:white;color:inherit;font:inherit}.legend{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font-weight:650}svg{display:block;width:min(100%,580px);margin:auto;overflow:visible}svg text{font:14px system-ui,sans-serif;fill:#353755}.scroll{overflow:auto}table{border-collapse:collapse;width:100%;min-width:440px;font-variant-numeric:tabular-nums}th,td{text-align:left;padding:.45rem .5rem;border-bottom:1px solid #e4e5f0}thead{background:#f2effa}small,.foot{color:#59607a}.total{font-size:1.15rem;font-weight:720} @media(max-width:500px){.card{padding:.65rem}svg text{font-size:17px}}
+</style></head><body><main><a href="index.html#scores">← 返回績效評核總表</a><h1>總經理個人雷達圖</h1><p class="notice">POC｜全頁為合成示例，沒有實際績效資料。</p><section class="card"><div class="controls"><label>評核架構<select id="mode"><option>A</option><option selected>B</option><option>C</option></select></label><label id="scenario-box">比較組情境<select id="scenario"><option selected>S0</option><option>S5</option></select></label><label hidden>兼任者比較角色<select id="position"><option>示例角色</option></select></label></div><p id="total" class="total" aria-live="polite"></p><p class="legend" id="legend"></p><div id="chart"></div><div class="scroll"><table><thead><tr><th>構面</th><th>總經理本人</th><th>處級平均</th><th>廠長／經理級平均</th></tr></thead><tbody id="values"></tbody></table></div></section><p class="foot">雷達軸用 0–9 的共同尺度、原始構面分數，不是加權貢獻。分組分軸平均，不計分不進分母；S0 的原表情境零分仍按原規則保留。總經理只作跨層級參照，不加入兩組平均或排名。A 與 B 的雷達軸看似相似，但成果來源不同。</p></main><script>const data={"A":{"axes":["營運成果","工作態度","核心職能","管理職能","專業職能","永續發展"],"weights":[0.7,0.06,0.06,0.06,0.06,0.06],"own":[7,6,7.5,6.5,7,5.5],"variants":{"A":{"示例角色":[[[6.666666666666667,3],[6.5,3],[6.5,3],[6.5,3],[6.5,3],[6.5,3]],[[6.25,4],[6.125,4],[6.375,4],[5.875,4],[6.25,4],[6.125,4]]]}}},"B":{"axes":["綜合成果","工作態度","核心職能","管理職能","專業職能","永續發展"],"weights":[0.7,0.06,0.06,0.06,0.06,0.06],"own":[7.5,6.5,7,6,7.5,7],"variants":{"S0":{"示例角色":[[[6.833333333333333,3],[6.5,3],[6.5,3],[6.5,3],[4.666666666666667,3],[6.333333333333333,3]],[[6.5,4],[6.125,4],[6.5,4],[4.375,4],[6.125,4],[6.25,4]]]},"S5":{"示例角色":[[[6.833333333333333,3],[6.5,3],[6.5,3],[6.5,3],[6.333333333333333,3],[6.333333333333333,3]],[[6.2,5],[6.125,4],[6.5,4],[5.625,4],[6.125,4],[6.25,4]]]}}},"C":{"axes":["第二成長與創新","營運成果","年度執行專案","顧客價值與核心職能","流程執行與優化","學習成長與人才培育"],"weights":[0.2,0.15,0.15,0.2,0.15,0.15],"own":[6.5,7.5,6,7,5.5,7],"variants":{"S0":{"示例角色":[[[6.5,3],[6.5,3],[6.5,3],[6.333333333333333,3],[5.75,2],[6.333333333333333,3]],[[6.125,4],[6.375,4],[6.333333333333333,3],[6.375,4],[6.125,4],[6.25,4]]]},"S5":{"示例角色":[[[6.5,3],[6.5,3],[6.5,3],[6.333333333333333,3],[5.75,2],[6.333333333333333,3]],[[6.125,4],[6.375,4],[6.333333333333333,3],[6.375,4],[6.125,4],[6.25,4]]]}}}},demo=true;
+const groups=['總經理本人','處級平均','廠長／經理級平均'], colors=['#6b38ba','#008579','#b35708'];
+const el=id=>document.getElementById(id);
+const mode=el('mode'),sc=el('scenario'),role=el('position');
+const point=(v,i)=>{const a=Math.PI*i/3-Math.PI/2;return [280+v/9*152*Math.cos(a),206+v/9*152*Math.sin(a)];};
+const pts=a=>a.map((v,i)=>point(v,i).join(',')).join(' ');
+const fmt=v=>v===null?'不計分':v.toFixed(2);
+const safe=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+function draw(){
+ const m=mode.value, d=data[m], s=m==='A'?'A':sc.value;
+ el('scenario-box').hidden=m==='A';
+ const selected=d.variants[s][role.value], vals=[d.own,...selected.map(g=>g.map(v=>v[0]))];
+ const score=d.own.reduce((a,v,i)=>a+v*d.weights[i],0);
+ el('total').textContent='總經理本人 '+m+' 版 '+score.toFixed(2)+'／9'+(m==='A'&&!demo?'（條件試算）':'');
+ let svg='<svg viewBox="0 0 560 412" role="img" aria-label="'+m+' 版三層級雷達圖">';
+ for(const v of [3,6,9])svg+='<polygon points="'+pts(Array(6).fill(v))+'" fill="none" stroke="#d9deea" />';
+ d.axes.forEach((a,i)=>{const [x,y]=point(9,i), [xx,yy]=point(i===0||i===3?10:10.1,i);svg+='<line x1="280" y1="206" x2="'+x+'" y2="'+y+'" stroke="#d9deea"/><text x="'+xx+'" y="'+yy+'" text-anchor="middle" dominant-baseline="central">'+safe(a)+'</text>';});
+ vals.forEach((v,g)=>{
+   if(v.every(Number.isFinite))svg+='<polygon points="'+pts(v)+'" fill="'+colors[g]+'12" stroke="'+colors[g]+'" stroke-width="2.7" stroke-dasharray="'+['none','7 4','2 4'][g]+'"/>';
+   v.forEach((z,i)=>{if(Number.isFinite(z)){const [x,y]=point(z,i);svg+='<circle cx="'+x+'" cy="'+y+'" r="2.8" fill="'+colors[g]+'"/>';}});
+ });
+ el('chart').innerHTML=svg+'</svg>';
+ el('legend').innerHTML=groups.map((g,i)=>'<span style="color:'+colors[i]+'">● '+g+'</span>').join('');
+ el('values').innerHTML=d.axes.map((a,i)=>'<tr><th scope="row">'+safe(a)+'</th><td>'+fmt(vals[0][i])+'</td>'+selected.map(g=>'<td>'+fmt(g[i][0])+' <small>（n='+g[i][1]+'）</small></td>').join('')+'</tr>').join('');
+}
+[mode,sc,role].forEach(e=>e.addEventListener('change',draw));
+draw();</script></body></html>
